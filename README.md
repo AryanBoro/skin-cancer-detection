@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/gradcam_heatmap.png" width="200" alt="Grad-CAM Heatmap"/>
-</p>
-
 <h1 align="center">🔬 Skin Cancer Detection API</h1>
 
 <p align="center">
