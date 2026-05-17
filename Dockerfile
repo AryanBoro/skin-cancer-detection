@@ -4,11 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-# Install system dependencies needed for OpenCV
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+# System dependencies are not needed because we use opencv-python-headless
 
 RUN pip install --no-cache-dir -r requirements.txt
 
