@@ -1,8 +1,6 @@
 import os
 os.environ["TF_USE_LEGACY_KERAS"] = "1"
-import tf_keras
 import tensorflow as tf
-tf.keras = tf_keras
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -41,7 +39,8 @@ CLASS_INFO = {
     6: {"risk": "Benign", "color": "green"},
 }
 
-MODEL_PATH = r"C:\Users\aryan\OneDrive\Desktop\skin-cancer\efficientnetv2s.h5"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "efficientnetv2s.h5")
 
 model = None
 grad_model = None
