@@ -73,7 +73,8 @@ def preprocess_image(image_bytes: bytes) -> tuple:
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     original = image.resize((224, 224))
     img_array = np.array(original, dtype=np.float32)
-    img_array = tf.keras.applications.efficientnet_v2.preprocess_input(img_array)
+    # The model was trained with custom [-1, 1] scaling
+    img_array = (img_array / 255.0 - 0.5) * 2.0
     img_array = np.expand_dims(img_array, axis=0)
     return img_array, np.array(original)
 
